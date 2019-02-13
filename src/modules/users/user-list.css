@@ -1,0 +1,9 @@
+.user-list table tbody tr td a {
+    border-radius: 5px;
+    /* border: 2px solid brown; */
+    border: 2px solid;
+    margin-top: 10px;
+    /* color: brown; */
+    font-weight: bold;
+    padding: 3px;
+}
