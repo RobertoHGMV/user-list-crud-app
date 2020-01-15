@@ -16,10 +16,10 @@ export default class UserDetail extends Component {
         if (id == null) return;
 
         const response = await api.get(`/v1/users/${id}`);
-
+        
         if (response.data.docs == null)
             this.setState({ redirect: true });
-
+        
         this.setState({ user: response.data.docs, redirect: false });
     }
 

@@ -20,7 +20,6 @@ export default class UserList extends Component {
     loadUsers = async (page = 1) => {
         const response = await api.get(`v1/users`);
         const users = response.data.docs;
-
         this.setState({ users: users });
     }
 

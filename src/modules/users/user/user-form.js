@@ -26,14 +26,10 @@ export default class User extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        try {
-            if (this.state.add)
-                this.addUser();
-            else
-                this.updateUser();
-        } catch (ex) {
-            console.log(ex);
-        }
+        if (this.state.add)
+            this.addUser();
+        else
+            this.updateUser();
     }
 
     handleChange = (e) => {
@@ -49,19 +45,27 @@ export default class User extends Component {
         this.setState({ add: false, ...response.data.docs });
     }
 
-    addUser = () => {
-        api.post(`/v1/users`, {
-            FirstName: this.state.firstName,
-            LastName: this.state.lastName
-        });
+    addUser = async () => {
+        try {
+            await api.post(`/v1/users`, {
+                FirstName: this.state.firstName,
+                LastName: this.state.lastName
+            });
+        } catch (ex) {
+            console.log(ex);
+        }
     }
 
-    updateUser = () => {
-        api.put(`/v1/users`, {
-            Id: this.state.id,
-            FirstName: this.state.firstName,
-            LastName: this.state.lastName
-        });
+    updateUser = async () => {
+        try {
+            await api.put(`/v1/users`, {
+                Id: this.state.id,
+                FirstName: this.state.firstName,
+                LastName: this.state.lastName
+            });
+        } catch(ex) {
+            console.log(ex);
+        }
     }
 
     render() {
